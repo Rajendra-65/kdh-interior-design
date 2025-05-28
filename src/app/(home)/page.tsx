@@ -34,10 +34,10 @@ export default function Home() {
       >
         <div className = "flex flex-col items-start w-[30%]">
           <Button
-            className = "bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white pb-6 "
+            className = "bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white pb-6 mt-2"
             asChild
           >
-            <Link href="/start-project" >Startproject</Link>
+            <Link href="/start-project" className= "mt-2">Startproject</Link>
           </Button>
           <div className = "flex items-center justify-between w-[100%] mt-[27%]">
             <div className = "flex flex-col items-center">

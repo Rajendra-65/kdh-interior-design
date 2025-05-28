@@ -19,7 +19,7 @@ const Navbar = () => {
                     <Link className="hover:underline-offset-1 hover:underline" href="/">
                         <li className="text-lg font-semibold cursor-pointer">Home</li>
                     </Link>
-                    <Link className="hover:underline-offset-1 hover:underline" href="/services">
+                    <Link className="hover:underline-offset-1 hover:underline" href="/service">
                         <li className="text-lg font-semibold cursor-pointer">Services</li>
                     </Link>
                     <Link className="hover:underline-offset-1 hover:underline" href="/contact">

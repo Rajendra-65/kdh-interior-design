@@ -5,9 +5,9 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <>
-            <div className="flex items-center justify-between py-4 border-t bg-black text-white p-0 w-full">
+            <div className="flex items-center justify-between py-4 border-t bg-black text-white p-0 w-full bottom-0 fixed z-50">
                 <div className="p-4">
-                    <h1 className="text-lg font-bold">KHD</h1>
+                    <h1 className="text-lg font-bold cursor-pointer">KHD</h1>
                     <p className="text-sm w-[40%]">
                         KHD Interior Design crafts elegant, functional spaces with a focus on personalized aesthetics and high-quality materials, transforming homes and offices into timeless expressions of style and comfort.
                     </p>
@@ -17,24 +17,24 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="w-[60%] flex  gap-10">
+                <div className="w-[80%] md:w-[60%] flex  gap-10">
                     <div className="flex flex-col items-center justify-center p-2">
                         <h1 className="font-bold mb-2">Our Services</h1>
-                        <h1 className="text-sm font-semibold mb-1">Interior Design</h1>
-                        <h1 className="text-sm font-semibold mb-1">Outro Design</h1>
-                        <h1 className="text-sm font-semibold mb-1">Lightning Design</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Interior Design</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Outro Design</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Lightning Design</h1>
                     </div>
                     <div className="flex flex-col items-center justify-center p-2 ">
-                        <h1 className="font-bold mb-2">Company</h1>
-                        <h1 className="text-sm font-semibold mb-1">Review</h1>
-                        <h1 className="text-sm font-semibold mb-1">Carrers</h1>
-                        <h1 className="text-sm font-semibold mb-1">Pricing</h1>
+                        <h1 className="font-bold mb-2 cursor-pointer">Company</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Review</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Carrers</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Pricing</h1>
                     </div>
                     <div className="flex flex-col items-center justify-center p-2 ">
-                        <h1 className="font-bold mb-2">Contact Us</h1>
-                        <h1 className="text-sm font-semibold mb-1">info@kdh.com</h1>
-                        <h1 className="text-sm font-semibold mb-1">Chandrashekar Pur Bhubaneswar</h1>
-                        <h1 className="text-sm font-semibold mb-1">Lightning Design</h1>
+                        <h1 className="font-bold mb-2 cursor-pointer">Contact Us</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">info@kdh.com</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Chandrashekar Pur Bhubaneswar</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Lightning Design</h1>
                     </div>
                 </div>
             </div>
