@@ -1,14 +1,56 @@
+"use client";
+import { motion } from "motion/react";
 
 const Support = () => {
+    const str: string = "Support & Help Center";
+    const headArray: string[] = str.split(" ");
+
+    const DivVariant = {
+        hidden: {
+            opacity: 0,
+        },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.12,
+                ease: "easeOut"
+            }
+        }
+    }
+
+    const h1Variants = {
+        hidden: { y: -80, opacity: 0, delay: 2 },
+        show: {
+            y: 0,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 80, damping: 12 },
+        },
+    };
+
     return (
         <div className="w-full max-w-5xl mx-auto px-4 py-12 space-y-12">
+            <motion.div
+                className="flex gap-1 justify-center"
+                variants={DivVariant}
+                initial="hidden"
+                animate="show"
+            >
+                {
+                    headArray.map((word, index) => (
+                        <motion.h1
+                            key={index}
+                            className="text-3xl font-bold text-gray-800"
+                            variants={h1Variants}
+                        >
+                            {word}
+                        </motion.h1>
+                    ))
+                }
+            </motion.div>
 
-            <div className="text-center">
-                <h1 className="text-3xl font-bold text-gray-800">Support & Help Center</h1>
-                <p className="mt-2 text-gray-600">
-                    We`&apos;`re here to assist you with anything related to your interior design journey with KHD.
-                </p>
-            </div>
+            <p className="mt-2 text-gray-600">
+                We`&apos;`re here to assist you with anything related to your interior design journey with KHD.
+            </p>
 
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
@@ -28,7 +70,7 @@ const Support = () => {
 
 
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Send a Message</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mb-4 animate-caret-blink">Send a Message</h2>
                 <form className="grid grid-cols-1 gap-4">
                     <input
                         type="text"
