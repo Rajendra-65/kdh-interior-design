@@ -6,7 +6,7 @@ const Support = () => {
             <div className="text-center">
                 <h1 className="text-3xl font-bold text-gray-800">Support & Help Center</h1>
                 <p className="mt-2 text-gray-600">
-                    We're here to assist you with anything related to your interior design journey with KHD.
+                    We`&apos;`re here to assist you with anything related to your interior design journey with KHD.
                 </p>
             </div>
 

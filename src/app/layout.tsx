@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <Navbar />
           {children}
-        <Footer cn="!pl-0"/>
+        <Footer cn="!pl-0" />
       </body>
     </html>
   );
