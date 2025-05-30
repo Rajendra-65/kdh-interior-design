@@ -6,21 +6,25 @@ import { Zap } from "lucide-react";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between items-center gap-10 py-10 px-6">
+      <div className="flex flex-col lg:flex-row justify-between items-center gap-10 md:py-10 py-2 px-6">
         {/* Left: Text Section */}
         <div className="flex flex-col max-w-xl flex-1">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
             Interior Design KHD
           </h1>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed md:mb-6 mb-0">
             Step into a world where the art of interior design is meticulously crafted to transform spaces into stunning visual narratives. At KHD, we believe that every room tells a story, and our mission is to help you tell yours with elegance and style.
           </p>
-          <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 w-fit rounded-md">
+          {/* animate-bounce */}
+          <Button 
+            className="mt-2 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-0 md:mt-0 md:py-2 w-fit rounded-md shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
+            asChild
+          >  
             <Link href="/start-project">Start Project</Link>
           </Button>
 
           {/* Stats */}
-          <div className="flex justify-between gap-6 mt-10">
+          <div className="flex justify-between gap-6 mt-2 md:mt-10">
             {[
               { count: "400+", label: "Projects Complete" },
               { count: "600+", label: "Unique Clients" },
@@ -35,11 +39,11 @@ export default function Home() {
         </div>
 
         {/* Right: Image with border accent */}
-        <div className="relative flex-1 max-w-md">
+        <div className="relative flex-1 max-w-md  ">
           <Image
             src="/home-page-1st-right-image.jpg"
             alt="Interior Design"
-            className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover"
+            className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover inset-shadow-2xs hover:inset-shadow-indigo-500/50 translate-z-12 rotate-x-0"
             width={600}
             height={400}
           />
@@ -52,7 +56,7 @@ export default function Home() {
           <div className="h-[2px] w-14 bg-gray-700 justify-center mt-6 "></div>
           <h1 className="text-4xl font-semibold text-gray-700 ml-3">Our Services</h1>
         </div>
-        <div className="pt-4 w-full flex justify-between pb-4">
+        <div className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2  pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4">
           <div className="flex w-[450px] h-[130px] bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors duration-300 cursor-pointer">
             <Zap className="size-28 text-cyan-400 text-center" />
             <div className="flex flex-col pl-3">
