@@ -1,25 +1,63 @@
+"use client"
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link"
 import { Zap } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Home() {
+  const str: string = "Interior Design KHD!"
+  const headArray: string[] = str.split(" ");
+
+  const divVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const h1Variants = {
+    hidden: { y: -80, opacity: 0, delay: 2 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 80, damping: 12 },
+    },
+  };
+
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between items-center gap-10 md:py-10 py-2 px-6">
+      <div className="flex flex-col lg:flex-row justify-between items-center gap-10 md:py-4 py-2 px-6 lg:pb-0  ">
         {/* Left: Text Section */}
         <div className="flex flex-col max-w-xl flex-1">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            Interior Design KHD
-          </h1>
+          <motion.div
+            variants={divVariants}
+            initial="hidden"
+            animate="show"
+            className="flex gap-1 mb-1"
+          >
+            {headArray.map((word, index) => (
+              <motion.h1
+                key={index}
+                className="text-3xl md:text-4xl font-bold text-gray-800"
+                variants={h1Variants}
+              >
+                {word}
+              </motion.h1>
+            ))}
+          </motion.div>
           <p className="text-gray-600 text-sm md:text-base leading-relaxed md:mb-6 mb-0">
             Step into a world where the art of interior design is meticulously crafted to transform spaces into stunning visual narratives. At KHD, we believe that every room tells a story, and our mission is to help you tell yours with elegance and style.
           </p>
           {/* animate-bounce */}
-          <Button 
-            className="mt-2 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-0 md:mt-0 md:py-2 w-fit rounded-md shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
+          <Button
+            className="animate-bounce mt-2 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-0 md:mt-0 md:py-2 w-fit rounded-md shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
             asChild
-          >  
+          >
             <Link href="/start-project">Start Project</Link>
           </Button>
 
@@ -51,13 +89,17 @@ export default function Home() {
       </div>
 
 
-      <div className="flex flex-col items-start">
-        <div className="flex">
+      <div className="flex flex-col items-start ">
+        <div className="flex pl-8">
           <div className="h-[2px] w-14 bg-gray-700 justify-center mt-6 "></div>
           <h1 className="text-4xl font-semibold text-gray-700 ml-3">Our Services</h1>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2  pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4">
-          <div className="flex w-[450px] h-[130px] bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors duration-300 cursor-pointer">
+        <div
+          className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2  pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4"
+        >
+          <div
+            className="flex w-[450px] h-[130px] bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors duration-300 cursor-pointer"
+          >
             <Zap className="size-28 text-cyan-400 text-center" />
             <div className="flex flex-col pl-3">
               <h1 className="text-2xl">Lightening Design</h1>
@@ -66,7 +108,9 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer">
+          <div
+            className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
+          >
             <Zap className="size-28 text-cyan-400" />
             <div className="flex flex-col pl-3">
               <h1 className="text-2xl">Interior Design</h1>
@@ -75,7 +119,9 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer">
+          <div
+            className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
+          >
             <Zap className="size-28 text-cyan-400" />
             <div className="flex flex-col pl-3">
               <h1 className="text-2xl">Outro Design</h1>
