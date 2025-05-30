@@ -43,7 +43,7 @@ export default function Home() {
           <Image
             src="/home-page-1st-right-image.jpg"
             alt="Interior Design"
-            className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover inset-shadow-2xs hover:inset-shadow-indigo-500/50 translate-z-12 rotate-x-0"
+            className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover inset-shadow-2xs hover:inset-shadow-indigo-500/50"
             width={600}
             height={400}
           />
