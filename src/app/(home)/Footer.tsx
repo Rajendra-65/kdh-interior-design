@@ -1,12 +1,14 @@
-
+"use client";
 import { Mail } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface cn{
     cn?: string;
 }
 
 const Footer = (cn:cn) => {
+    const Router = useRouter();
     return (
         <>
             <div className={`flex items-center justify-between border-t bg-black text-white p-0 w-full bottom-0 fixed z-50 ${cn}`}>
@@ -23,10 +25,10 @@ const Footer = (cn:cn) => {
                 </div>
                 <div className="w-[100%] md:w-[60%] flex  gap-10">
                     <div className="flex flex-col items-center justify-center p-2">
-                        <h1 className="font-bold mb-2">Our Services</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Interior Design</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Outro Design</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Lightning Design</h1>
+                        <h1 className="font-bold mb-2 cursor-pointer" onClick={()=>Router.push('/service')}>Our Services</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick={()=>Router.push('/service')}>Interior Design</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick={()=>Router.push('/service')}>Outro Design</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick={()=>Router.push('/service')}>Lightning Design</h1>
                     </div>
                     <div className="flex flex-col items-center justify-center p-2 ">
                         <h1 className="font-bold mb-2 cursor-pointer">Company</h1>
@@ -34,11 +36,14 @@ const Footer = (cn:cn) => {
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">Carrers</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">Pricing</h1>
                     </div>
-                    <div className="flex flex-col items-center justify-center p-2 ">
-                        <h1 className="font-bold mb-2 cursor-pointer">Contact Us</h1>
+                    <div 
+                        className="flex flex-col items-center justify-center p-2 cursor-pointer"
+                        onClick = {() => Router.push('/contact')}
+                    >
+                        <h1 className="font-bold mb-2 cursor-pointer" onClick = {()=>Router.push('/contact')}>Contact Us</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">khdarchprojects@gmail.com</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">ChandrasekharPur Bhubaneswar</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Lightning Design</h1>
+                        
                     </div>
                 </div>
             </div>

@@ -80,13 +80,13 @@ const Contact = () => {
                 <div className="space-y-6">
                     <h2 className="text-2xl font-semibold">Visit or Contact Us</h2>
                     <div>
-                        <p className="text-gray-700"><strong>Address:</strong>ChandraShekharpur, Kanheilal Complex , plot.No 42</p>
-                        <p className="text-gray-700"><strong>Phone:</strong> +91 98765 43210</p>
-                        <p className="text-gray-700"><strong>Email:</strong> contact@khdinteriors.com</p>
+                        <p className="text-gray-700"><strong>Address:</strong>2nd floor, Kanheilal Complex, Plot No. - 42, District Center, Chandrasekharpur, Bhubaneswar, Odisha 751016</p>
+                        <p className="text-gray-700"><strong>Phone:</strong> +91 90400902333</p>
+                        <p className="text-gray-700"><strong>Email:</strong> khdarchprojects@gmail.com</p>
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps?q=Kanheilal%20Complex,%20Plot%20No.42,%20Chandrasekharpur,%20Bhubaneswar&output=embed"
+                        src="https://www.google.com/maps?q=KHD%20Interior%20Projects%20(opc)%20Pvt.Ltd.District%20Center,Chandrasekharpur,Bhubaneswar&output=embed"
                         width="100%"
                         height="300"
                         loading="lazy"
