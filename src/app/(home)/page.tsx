@@ -1,13 +1,41 @@
 "use client"
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link"
 import { Zap } from "lucide-react";
 import { motion } from "motion/react";
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { getInteriorImage } from "../../../service/getImage";
+import { useEffect,useState } from "react";
 
 export default function Home() {
+  const [images, setImages] = useState<string[]>([])
   const str: string = "Interior Design KHD!"
   const headArray: string[] = str.split(" ");
+
+  const fetchInteriorImage  = async () => {
+    try {
+      const images = await getInteriorImage();
+      setImages(images)
+    } catch (error) {
+      console.error("Error fetching interior images:", error);
+      return [];
+    }
+  }
+  
+  useEffect(()=>{
+    const images =  fetchInteriorImage();    
+    console.log(images)
+  },[])
+
+
 
   const divVariants = {
     hidden: { opacity: 0 },
@@ -77,15 +105,32 @@ export default function Home() {
         </div>
 
         {/* Right: Image with border accent */}
-        <div className="relative flex-1 max-w-md  ">
-          <Image
-            src="/home-page-1st-right-image.jpg"
-            alt="Interior Design"
-            className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover inset-shadow-2xs hover:inset-shadow-indigo-500/50"
-            width={600}
-            height={400}
-          />
+        <div className="relative flex-1 max-w-md">
+          <Carousel className="w-full max-w-xs">
+            <CarouselContent>
+              {images.map((_, index) => (
+                <CarouselItem key={index}>
+                  <div className="">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-0">
+                        {/* Background image span */}
+                        <span
+                          className={`w-full h-full block bg-cover bg-center rounded-lg shadow-md`}
+                          style={{ backgroundImage: `url(${images[index]})` }}
+                        >
+                          
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
+
       </div>
 
 
