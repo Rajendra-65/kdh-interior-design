@@ -5,8 +5,11 @@ import { motion } from "motion/react"
 // import { Button } from "@/components/ui/button";
 import Link from "next/link"
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
-    const router = useRouter()
+    const pathName = usePathname();
+    const router = useRouter();
 
     const navItems = [
         { name: "Home", href: "/" },
@@ -54,9 +57,6 @@ const Navbar = () => {
     }
 
     return (
-
-
-
         <div
             className="flex  items-center justify-between p-8"
         >
@@ -69,7 +69,13 @@ const Navbar = () => {
                     animate = "show"
                     className="text-xl font-bold cursor-pointer" onClick={() => router.push("/")}
                 >
-                    KHD
+                    <Image
+                        src="/KHD-logo.png"
+                        width={80}
+                        height = {80}
+                        alt = "KHD Logo"
+                        className="z-10"
+                    />
                 </motion.h1>
             </div>
 
@@ -89,7 +95,7 @@ const Navbar = () => {
                         >
                             <Link
                                 href={item.href}
-                                className="hover:underline-offset-1 hover:underline"
+                                className={`hover:underline-offset-1 hover:underline ${pathName ===  item.href ? "underline-offset-1 underline" : ""}`}
                             >
                                 {item.name}
                             </Link>

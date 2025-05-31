@@ -16,8 +16,8 @@ const Footer = (cn:cn) => {
                         KHD Interior Design crafts elegant, functional spaces with a focus on personalized aesthetics and high-quality materials, transforming homes and offices into timeless expressions of style and comfort.
                     </p>
                     <div className="flex gap-4 w-full">
-                        <Link className="hover:underline-offset-1 hover:underline text-sm" href="">
-                            <Mail className="size-3 mt-2" />
+                        <Link href="mailto:khdarchprojects@gmail.com?subject=Inquiry&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." className="hover:underline-offset-1 hover:underline text-sm">
+                            <Mail  className="size-3 mt-2" />
                         </Link>
                     </div>
                 </div>
@@ -36,8 +36,8 @@ const Footer = (cn:cn) => {
                     </div>
                     <div className="flex flex-col items-center justify-center p-2 ">
                         <h1 className="font-bold mb-2 cursor-pointer">Contact Us</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">info@kdh.com</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Chandrashekar Pur Bhubaneswar</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">khdarchprojects@gmail.com</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">ChandrasekharPur Bhubaneswar</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">Lightning Design</h1>
                     </div>
                 </div>
