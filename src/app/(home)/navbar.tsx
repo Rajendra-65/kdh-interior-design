@@ -7,6 +7,13 @@ import Link from "next/link"
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import { Menu } from "lucide-react";
+
 const Navbar = () => {
     const pathName = usePathname();
     const router = useRouter();
@@ -39,20 +46,20 @@ const Navbar = () => {
     };
 
     const LogoVariant = {
-        hidden: { x: -80 , opacity:0},
-        show:{
-            x:0,
-            opacity:1,
-            transition:{type:"spring", stiffness:80, damping:20}
+        hidden: { x: -80, opacity: 0 },
+        show: {
+            x: 0,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 80, damping: 20 }
         }
     }
 
     const ButtonVariant = {
-        hidden: {x:80 , opacity:0},
-        show:{
-            x:0,
-            opacity:1,
-            transition:{type:"spring", stiffness:80, damping:20}
+        hidden: { x: 80, opacity: 0 },
+        show: {
+            x: 0,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 80, damping: 20 }
         }
     }
 
@@ -63,17 +70,17 @@ const Navbar = () => {
             <div
                 className="flex items-center justify-center"
             >
-                <motion.h1 
+                <motion.h1
                     variants={LogoVariant}
-                    initial = "hidden"
-                    animate = "show"
+                    initial="hidden"
+                    animate="show"
                     className="text-xl font-bold cursor-pointer" onClick={() => router.push("/")}
                 >
                     <Image
                         src="/KHD-logo.png"
                         width={80}
-                        height = {80}
-                        alt = "KHD Logo"
+                        height={80}
+                        alt="KHD Logo"
                         className="z-10"
                     />
                 </motion.h1>
@@ -82,7 +89,7 @@ const Navbar = () => {
             <div>
                 <motion.ul
                     variants={containerVariants}
-                    className=" flex  tiems-center justify-around gap-9"
+                    className=" md:flex  tiems-center justify-around gap-9 hidden md:visible"
                     initial="hidden"
                     animate="show"
                 >
@@ -95,7 +102,7 @@ const Navbar = () => {
                         >
                             <Link
                                 href={item.href}
-                                className={`hover:underline-offset-1 hover:underline ${pathName ===  item.href ? "underline-offset-1 underline" : ""}`}
+                                className={`hover:underline-offset-1 hover:underline ${pathName === item.href ? "underline-offset-1 underline" : ""}`}
                             >
                                 {item.name}
                             </Link>
@@ -105,14 +112,39 @@ const Navbar = () => {
             </div>
 
             <motion.button
-                className="animate-bounce bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
-                variants = {ButtonVariant}
-                initial = "hidden"
-                animate = "show"
+                className="md:flex md:visible md:animate-bounce hidden  bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
+                variants={ButtonVariant}
+                initial="hidden"
+                animate="show"
                 whileHover={{ scale: 1.1 }}
             >
                 <Link href="/sign-up">Sign up</Link>
             </motion.button>
+            <div className="visible md:hidden">
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Menu/>
+                    </SheetTrigger>
+                    
+                    <SheetContent>
+                        <ul className="flex flex-col gap-4 p-6">
+                            {navItems.map((item, idx) => (
+                                <li key={idx} className="text-lg font-semibold cursor-pointer">
+                                    <Link
+                                        href={item.href}
+                                        className={`hover:underline-offset-1 hover:underline ${pathName === item.href ? "underline-offset-1 underline" : ""}`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </SheetContent>
+                    {/* <SheetClose className="absolute top-4 right-4">
+                        <X className="size-5 text-black" />
+                    </SheetClose> */}
+                </Sheet>
+            </div>
         </div>
     )
 }

@@ -56,15 +56,15 @@ const Support = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div className=" border-2 rounded-lg p-6">
                     <h2 className="text-lg font-semibold mb-1 text-cyan-600">Email Us</h2>
-                    <p className="text-gray-700">support@khd.design</p>
+                    <p className="text-gray-700">khdarchprojects@gmail.com</p>
                 </div>
                 <div className="border-2 rounded-lg p-6">
                     <h2 className="text-lg font-semibold mb-1 text-cyan-600">Call Us</h2>
-                    <p className="text-gray-700">+91 98765 43210</p>
+                    <p className="text-gray-700">+91 90400902333</p>
                 </div>
                 <div className="border-2 rounded-lg p-6">
                     <h2 className="text-lg font-semibold mb-1 text-cyan-600">Visit Us</h2>
-                    <p className="text-gray-700">Plot No.42, Kanheilal Complex, Chandrasekharpur, Bhubaneswar</p>
+                    <p className="text-gray-700">2nd floor, Kanheilal Complex, Plot No. - 42, District Center, Chandrasekharpur, Bhubaneswar, Odisha 751016</p>
                 </div>
             </div>
 
