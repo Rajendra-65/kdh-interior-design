@@ -8,6 +8,7 @@ import { getOutroImage } from "../../../../service/getImage";
 import { getLighteningImage } from "../../../../service/getImage";
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card"
+
 import {
     Carousel,
     CarouselContent,

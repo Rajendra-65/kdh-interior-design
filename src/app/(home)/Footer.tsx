@@ -2,6 +2,7 @@
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface cn{
     cn?: string;
@@ -21,6 +22,8 @@ const Footer = (cn:cn) => {
                         <Link href="mailto:khdarchprojects@gmail.com?subject=Inquiry&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." className="hover:underline-offset-1 hover:underline text-sm">
                             <Mail  className="size-3 mt-2" />
                         </Link>
+                        <Image src="/insta-logo.png" alt="Facebook" width={18} height={18} className="cursor-pointer mt-1" onClick={() => window.open("https://www.facebook.com", "_blank")} />
+                        <Image src="/fb-color.png" alt="Insta" width={18} height={18} className="cursor-pointer mt-1" onClick={() => window.open("https://www.twitter.com", "_blank")} />
                     </div>
                 </div>
                 <div className="w-[100%] lg:w-[60%] flex  gap-10 justify-around items-center lg:justify-normal">
