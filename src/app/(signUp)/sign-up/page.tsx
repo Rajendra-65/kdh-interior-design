@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { signUpUser } from "../../../../service/credentialService"
 
 const SignUp = () => {
 
@@ -40,8 +41,14 @@ const SignUp = () => {
             password
         }
 
-        console.log("Sign up Data:",signUpData);
-
+        const user = signUpUser(signUpData)
+        if (!user) {
+            alert("User already exists with this email");
+            return;
+        }
+        else{
+            console.log(user)
+        }
         // Reset the form fields after successful sign-up
         setFirstName('');
         setLastName('');
