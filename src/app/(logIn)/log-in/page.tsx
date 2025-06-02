@@ -1,4 +1,5 @@
 
+"use client"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -11,8 +12,32 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
+import { useState } from "react"
+import { logInUser } from "../../../../service/credentialService"
 
 const LogIn = () => {
+
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("")
+
+    const handleLogIn = async () =>{
+        if(!email || !password){
+            alert("Please fill all the fields")
+            return
+        }
+        
+        const logInData = {
+            email:email,
+            password:password
+        }
+
+        const user = await logInUser(logInData)
+
+        console.log(user)
+
+        
+    }
+
     return (
         <div className="flex items-center justify-center">
             <Card className="w-[90vw] max-w-sm">
@@ -39,6 +64,10 @@ const LogIn = () => {
                                     id="email"
                                     type="email"
                                     placeholder="m@example.com"
+                                    value={email}
+                                    onChange = {(e)=>{
+                                        setEmail(e.target.value)
+                                    }}
                                     required
                                 />
                             </div>
@@ -56,6 +85,10 @@ const LogIn = () => {
                                     id="password"
                                     type="password"
                                     required
+                                    value = {password}
+                                    onChange = {(e)=>{
+                                        setPassword(e.target.value)
+                                    }}
                                     placeholder="At least 8 charecter"
                                 />
                             </div>
@@ -66,6 +99,9 @@ const LogIn = () => {
                     <Button 
                         type="submit" 
                         className="w-full"
+                        onClick = {()=>{
+                            handleLogIn()
+                        }}
                     >
                         logIn
                     </Button>

@@ -17,3 +17,22 @@ export const signUpUser = async (signUpData:signUpDataType) => {
         console.log(error)
     }
 }
+
+export type logInDataType = {
+    email:string;
+    password:string;
+}
+
+export const logInUser = async (logInData:logInDataType) => {
+    try{
+        
+        const {data} = await axios.post('/api/logIn-user',logInData)
+        console.log(data)
+        if(!data.success){  
+            console.log(data.user)
+        }
+        return data.user;
+    }catch(error){
+        console.log(error)
+    }
+}
