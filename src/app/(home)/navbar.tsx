@@ -11,8 +11,11 @@ import {
     Sheet,
     SheetContent,
     SheetTrigger,
+    SheetFooter,
+    SheetClose
 } from "@/components/ui/sheet"
 import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
     const pathName = usePathname();
@@ -123,9 +126,9 @@ const Navbar = () => {
             <div className="visible md:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
-                        <Menu/>
+                        <Menu />
                     </SheetTrigger>
-                    
+
                     <SheetContent>
                         <ul className="flex flex-col gap-4 p-6">
                             {navItems.map((item, idx) => (
@@ -138,11 +141,27 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             ))}
+                            <Button
+                                className="bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
+                                onClick={() => router.push('/sign-up')}
+                            >
+                                Sign-up
+                            </Button>
                         </ul>
+                        <SheetFooter>
+                            <div className="flex flex-col justify-center">
+                                <h1 className="font-bold">Follow us on</h1>
+                                <div className="flex gap-2">
+                                    <Image src="/facebook-icon.png" alt="Facebook" width={30} height={30} className="cursor-pointer bg-transparent" onClick={() => window.open("https://www.facebook.com", "_blank")} />
+                                    <Image src="/insta-logo.png" alt="Twitter" width={30} height={30} className="cursor-pointer bg-transparent" onClick={() => window.open("https://www.twitter.com", "_blank")} />
+                                </div>
+                            </div>
+                            <SheetClose asChild>
+                                <Button variant="destructive" className = "cursor-pointer">Close</Button>
+                            </SheetClose>
+                        </SheetFooter>
                     </SheetContent>
-                    {/* <SheetClose className="absolute top-4 right-4">
-                        <X className="size-5 text-black" />
-                    </SheetClose> */}
+
                 </Sheet>
             </div>
         </div>

@@ -105,7 +105,6 @@ const Service = () => {
                         key={index}
                         className="flex flex-col items-start w-full max-w-md border border-gray-300 rounded-xl shadow-sm p-6 mt-8 bg-white hover:shadow-md transition-shadow duration-300"
                         variants={serviceVariants}
-                        whileHover={{ scale: 1.02 }}
                     >
                         {/* Header */}
                         <div className="flex items-center mb-4">

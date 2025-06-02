@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "KHD - Interior Design",
   description: "The Best Interior Design Service in Bhubaneswar",
+  icons:{
+    icon:"/fav-icon.ico"
+  },
 };
 
 export default function RootLayout({

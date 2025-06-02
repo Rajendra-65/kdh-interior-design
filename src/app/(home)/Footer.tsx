@@ -11,8 +11,8 @@ const Footer = (cn:cn) => {
     const Router = useRouter();
     return (
         <>
-            <div className={`flex items-center justify-between border-t bg-black text-white p-0 w-full bottom-0 fixed z-50 ${cn}`}>
-                <div className="p-4 w-[50%] hidden md:flex md:flex-col ">
+            <div className={`md:flex items-center justify-between border-t bg-black text-white p-0 w-full bottom-0 fixed z-50 ${cn} hidden md:visible`}>
+                <div className="p-4 w-[50%] hidden lg:flex lg:flex-col ">
                     <h1 className="text-lg font-bold cursor-pointer">KHD</h1>
                     <p className="text-sm w-[100%]">
                         KHD Interior Design crafts elegant, functional spaces with a focus on personalized aesthetics and high-quality materials, transforming homes and offices into timeless expressions of style and comfort.
@@ -23,7 +23,7 @@ const Footer = (cn:cn) => {
                         </Link>
                     </div>
                 </div>
-                <div className="w-[100%] md:w-[60%] flex  gap-10">
+                <div className="w-[100%] lg:w-[60%] flex  gap-10 justify-around items-center lg:justify-normal">
                     <div className="flex flex-col items-center justify-center p-2">
                         <h1 className="font-bold mb-2 cursor-pointer" onClick={()=>Router.push('/service')}>Our Services</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick={()=>Router.push('/service')}>Interior Design</h1>
