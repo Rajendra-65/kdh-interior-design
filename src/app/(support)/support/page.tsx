@@ -1,9 +1,14 @@
 "use client";
 import { motion } from "motion/react";
+import React from "react"
+import { sendMessage } from "../../../../service/sendEmailService";
 
 const Support = () => {
     const str: string = "Support & Help Center";
     const headArray: string[] = str.split(" ");
+    const [name, setName] = React.useState<string>("");
+    const [email, setEmail] = React.useState<string>("");
+    const [message, setMessage] = React.useState<string>("");
 
     const DivVariant = {
         hidden: {
@@ -26,6 +31,24 @@ const Support = () => {
             transition: { type: "spring", stiffness: 80, damping: 12 },
         },
     };
+
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+        if (!name || !email || !message){
+            alert("Please fill all the filds");
+            return;
+        }
+        e.preventDefault();
+        console.log(name,email,message)
+        const res = await sendMessage(name,email,message)
+        setName("");
+        setEmail("");
+        setMessage("");
+        if (res.success) {
+            alert('Message sent!');
+        } else {
+            alert('Error sending message.');
+        }
+    }
 
     return (
         <div className="w-full max-w-5xl mx-auto px-4 py-12 space-y-12">
@@ -71,21 +94,30 @@ const Support = () => {
 
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4 animate-caret-blink">Send a Message</h2>
-                <form className="grid grid-cols-1 gap-4">
+                <form 
+                    className="grid grid-cols-1 gap-4"
+                    onSubmit={(e) => handleSubmit(e)}
+                >
                     <input
                         type="text"
                         placeholder="Your Name"
                         className="border border-gray-300 rounded-md p-2"
+                        value = {name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <input
                         type="email"
                         placeholder="Your Email"
                         className="border border-gray-300 rounded-md p-2"
+                        value = {email}
+                        onChange={(e)=> setEmail(e.target.value)}
                     />
                     <textarea
                         placeholder="How can we help you?"
                         rows={4}
                         className="border border-gray-300 rounded-md p-2"
+                        value = {message}
+                        onChange={(e)=>setMessage(e.target.value)}
                     ></textarea>
                     <button
                         type="submit"
