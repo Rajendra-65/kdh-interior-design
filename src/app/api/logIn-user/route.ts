@@ -2,6 +2,7 @@ import { User } from "../../../models/User";
 import { NextResponse } from "next/server";
 import { connectDB } from "../../../../utils/connectDB";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken"
 
 export const POST = async (request: Request) => {
     await connectDB();
@@ -26,10 +27,19 @@ export const POST = async (request: Request) => {
             });
         }
 
+        // Generate JWT token
+        const token = jwt.sign(
+            { 
+                _id: user._id 
+            }, 
+            process.env.JWT_SECRET!
+        )
+
         return NextResponse.json({
             success:true,
             message: "User logged in successfully",
-            user:user
+            user:user,
+            token:token
         });
 
     } catch (error) {

@@ -26,12 +26,16 @@ export type logInDataType = {
 export const logInUser = async (logInData:logInDataType) => {
     try{
         
-        const {data} = await axios.post('/api/logIn-user',logInData)
+        const {data} = await axios.post('/api/logIn-user',JSON.stringify(logInData),{
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         console.log(data)
         if(!data.success){  
             console.log(data.user)
         }
-        return data.user;
+        return data;
     }catch(error){
         console.log(error)
     }
