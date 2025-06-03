@@ -19,13 +19,13 @@ export const POST = async (request: Request) => {
 
     try {
         await transporter.sendMail({
-            from: `"KHD Website Contact" <${process.env.GMAIL_USER}>`, // Authenticated sender
-            to: process.env.GMAIL_USER,                                 // Where the message should be delivered
-            replyTo: email,                                              // User's email for replies
+            from: `"KHD Website Contact" <${process.env.GMAIL_USER}>`, 
+            to: process.env.GMAIL_USER,                                 
+            replyTo: email,                                              
             subject: `New message from ${name} via KHD-web`,
             text: message,
         });
-        
+
         return NextResponse.json({ success: true, message: "Email sent successfully", status: 200 })
     } catch (error) {
 
