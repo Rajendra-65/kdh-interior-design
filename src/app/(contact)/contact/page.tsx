@@ -34,7 +34,7 @@ const Contact = () => {
         },
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
         console.log("handleSubmit called");
         if (!name || !email || !message) {
             alert("Please fill all the fields");
