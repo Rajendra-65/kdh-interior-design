@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/carousel"
 import { getInteriorImage } from "../../../service/getImage";
 import { useEffect,useState } from "react";
+import { checkAuth } from "../../../service/tokenService";
 
 export default function Home() {
   const [images, setImages] = useState<string[]>([])
+  const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false)
   const str: string = "Interior Design KHD!"
   const headArray: string[] = str.split(" ");
 
@@ -34,6 +36,11 @@ export default function Home() {
     const images =  fetchInteriorImage();    
     console.log(images)
   },[])
+
+  useEffect(()=>{
+    const value = checkAuth();
+    setIsAuthenticated(value)
+  },[images])
 
 
 
@@ -86,7 +93,13 @@ export default function Home() {
             className="animate-bounce mt-2 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-0 md:mt-0 md:py-2 w-fit rounded-md shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
             asChild
           >
-            <Link href="/start-project">Start Project</Link>
+            {
+              isAuthenticated ? (
+                <Link href="/start-project">Start Project</Link>
+              ) : (
+                <Link href="/sign-up">Start Project</Link>
+              )
+            }
           </Button>
 
           {/* Stats */}
