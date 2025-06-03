@@ -18,3 +18,21 @@ export const sendMessage = async (name:string, email:string, message:string) => 
         console.error("Error sending message:",error)
     }
 }
+
+export const callbackRequest = async (email:string, phone:string) => {
+    try{
+        console.log("send message service")
+        console.log(email,phone)
+        const response = await axios.post('/api/call-back',{
+            email,
+            phone
+        },{
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        return response.data
+    }catch(error){
+        console.error("Error sending message:",error)
+    }
+}

@@ -2,9 +2,9 @@ import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
 
 export const POST = async (request: Request) => {
-    const { name, email, message } = await request.json();
+    const { email, phone } = await request.json();
     console.log("inside API route")
-    console.log(name, email, message)
+    console.log( email , phone)
 
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -19,8 +19,8 @@ export const POST = async (request: Request) => {
             from: `"KHD Website Contact" <${process.env.GMAIL_USER}>`, 
             to: process.env.GMAIL_USER,                                 
             replyTo: email,                                              
-            subject: `New message from ${name} via KHD-web`,
-            text: message,
+            subject: `New message from ${email} via KHD-web`,
+            text: `Callback request from ${email} with phone number: ${phone}`,
         });
 
         return NextResponse.json({ success: true, message: "Email sent successfully", status: 200 })

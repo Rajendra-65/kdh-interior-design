@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import React from "react";
 import { sendMessage } from "../../../../service/sendEmailService";
+import { useRouter } from "next/navigation";
 // import Link from "next/link";
 
 const Contact = () => {
@@ -10,7 +11,7 @@ const Contact = () => {
     const [name, setName] = React.useState<string>("");
     const [email, setEmail] = React.useState<string>("");    
     const [message, setMessage] = React.useState<string>("");
-
+    const router = useRouter()
     const DivVariant = {
         hidden: {
             opacity: 0,
@@ -42,8 +43,11 @@ const Contact = () => {
         e.preventDefault();
         console.log(name,email,message)
         const res = await sendMessage(name,email,message)
-
+        setName("");
+        setEmail("");
+        setMessage("");
         if (res.success) {
+
             alert('Message sent!');
         } else {
             alert('Error sending message.');
@@ -132,7 +136,11 @@ const Contact = () => {
 
                         <h1 className="mx-2">or</h1>
 
-                        <button type="button" className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition">
+                        <button
+                            type="button" 
+                            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
+                            onClick = {() => router.push("/call-back")}
+                        >
                             Request a call back
                         </button>
                     </form>

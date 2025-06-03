@@ -40,3 +40,4 @@ export const logInUser = async (logInData:logInDataType) => {
         console.log(error)
     }
 }
+
