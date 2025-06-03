@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react"
 
 // import { Button } from "@/components/ui/button";
@@ -16,10 +16,19 @@ import {
 } from "@/components/ui/sheet"
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { checkAuth } from "../../../service/tokenService";
 
 const Navbar = () => {
+
     const pathName = usePathname();
     const router = useRouter();
+
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+    useEffect(() => {
+        const value = checkAuth(); // No need for 'boolean' type here
+        setIsAuthenticated(value);
+    }, [pathName])
 
     const navItems = [
         { name: "Home", href: "/" },
@@ -64,6 +73,13 @@ const Navbar = () => {
             opacity: 1,
             transition: { type: "spring", stiffness: 80, damping: 20 }
         }
+    }
+
+    const handleLogOut = () => {
+        window.localStorage.removeItem('KHDauthToken');
+        router.push('/sign-up')
+        setIsAuthenticated(false);
+        
     }
 
     return (
@@ -115,14 +131,20 @@ const Navbar = () => {
             </div>
 
             <motion.button
-                className="md:flex md:visible md:animate-bounce hidden  bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
+                className={`md:flex md:visible ${!isAuthenticated && pathName!="sign-up" ? "md:animate-bounce" : ""} hidden  bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md`}
                 variants={ButtonVariant}
                 initial="hidden"
                 animate="show"
                 whileHover={{ scale: 1.1 }}
             >
-                <Link href="/sign-up">Sign up</Link>
+                {isAuthenticated ? (
+                    <Link href="/sign-up" onClick={() => handleLogOut()}>Logout</Link>
+                ) : (
+                    <Link href="/sign-up">Sign up</Link>
+                )}
+
             </motion.button>
+
             <div className="visible md:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
@@ -141,12 +163,24 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             ))}
-                            <Button
-                                className="bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
-                                onClick={() => router.push('/sign-up')}
-                            >
-                                Sign-up
-                            </Button>
+                            {
+                                isAuthenticated ? (
+                                    <Button
+                                        className="bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
+                                        onClick={() => handleLogOut()}
+                                    >
+                                        LogOut
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        className="bg-cyan-400 hover:bg-cyan-500 text-black hover:text-white shadow-lg shadow-cyan-500/50 opacity-75 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 p-2 rounded-md"
+                                        onClick={() => router.push('/sign-up')}
+                                    >
+                                        Sign-up
+                                    </Button>
+                                )
+                            }
+
                         </ul>
                         <SheetFooter>
                             <div className="flex flex-col justify-center">
@@ -157,11 +191,10 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <SheetClose asChild>
-                                <Button variant="destructive" className = "cursor-pointer">Close</Button>
+                                <Button variant="destructive" className="cursor-pointer">Close</Button>
                             </SheetClose>
                         </SheetFooter>
                     </SheetContent>
-
                 </Sheet>
             </div>
         </div>

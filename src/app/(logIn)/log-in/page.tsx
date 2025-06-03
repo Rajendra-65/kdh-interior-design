@@ -14,11 +14,13 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { useState } from "react"
 import { logInUser } from "../../../../service/credentialService"
+import { useRouter } from "next/navigation"
 
 const LogIn = () => {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("")
+    const router = useRouter();
 
     const handleLogIn = async () => {
         if (!email || !password) {
@@ -41,6 +43,7 @@ const LogIn = () => {
         if (user.success){
             const token = user.token
             window.localStorage.setItem('KHDauthToken',token)
+            router.push('/')
         }
 
 }
