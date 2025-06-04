@@ -13,6 +13,10 @@ const ReviewSchema = new Schema({
     message:{
         type : String,
         required : true
+    },
+    rate:{
+        type : Number,
+        required : true
     }
 })
 

@@ -3,7 +3,8 @@ import axios from "axios"
 interface ReviewDataProps {
     username : string,
     email : string,
-    message : string
+    message : string,
+    rate : number
 }
 
 export const createReview = async (reviewData : ReviewDataProps) => {
@@ -13,5 +14,10 @@ export const createReview = async (reviewData : ReviewDataProps) => {
             "Content-Type" : "application/json"
         }
     })
+    return response.data
+}
+
+export const getReviews = async () => {
+    const response = await axios.get('/api/get-review')
     return response.data
 }
