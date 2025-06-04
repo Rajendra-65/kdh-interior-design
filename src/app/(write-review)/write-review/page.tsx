@@ -21,6 +21,8 @@ from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { createReview } from "../../../../service/ReviewService"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
+
 
 const formSchema = z.object({
     username: z.string().min(2,{
@@ -36,7 +38,9 @@ const formSchema = z.object({
     })
 })
 
-const Review = () => {
+const WriteReview = () => {
+
+    const router = useRouter()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -61,7 +65,14 @@ const Review = () => {
 
     return(
         <>
-            <div className = "flex w-full md:w-[60%] items-center m-auto h-auto px-4 py-4">
+            <div className = "flex flex-col w-full md:w-[60%] items-center m-auto h-auto px-4 py-4">
+                <Button
+                    className = "w-[50%] items-center text-center justify-center text-black bg-cyan-400 animate-bounce"
+                    onClick={()=>router.push('/reviews')}
+                >
+                    See all Reviews                  
+                </Button>
+
                 <Form {...form}>
                     <form 
                         onSubmit={form.handleSubmit(onSubmit)}
@@ -137,4 +148,4 @@ const Review = () => {
     )
 }
 
-export default Review
+export default WriteReview
