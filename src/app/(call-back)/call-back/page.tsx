@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 // import { useRouter } from "next/navigation"
 import { callbackRequest } from "../../../../service/sendEmailService"
+import { toast } from "sonner"
 
 const LogIn = () => {
 
@@ -24,7 +25,7 @@ const LogIn = () => {
 
     const handlecallBack = async () => {
         if (!email || !phone) {
-            alert("Please fill all the fields")
+            toast("Please fill all the fields")
             return
         }
 
@@ -32,9 +33,9 @@ const LogIn = () => {
         setEmail("")
         setPhone("")
         if (res.success) {
-            alert('Thank you for your request! We will get back to you soon.');
+            toast('Thank you for your request! We will get back to you soon.');
         } else {
-            alert('Error sending message.');
+           toast('Error sending message.');
         }
 
     }

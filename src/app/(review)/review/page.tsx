@@ -15,9 +15,12 @@ import {
     FormLabel,
     FormMessage
 }
+
 from "@/components/ui/form"
 
 import { Input } from "@/components/ui/input"
+import { createReview } from "../../../../service/ReviewService"
+import { toast } from "sonner"
 
 const formSchema = z.object({
     username: z.string().min(2,{
@@ -44,8 +47,16 @@ const Review = () => {
         }
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>){
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>){
+        const response = await createReview(values)
+        if(response.success){
+            toast.success(response.message)
+        }
+        else{
+            toast.error(response.message)
+        }
+        
+        form.reset()
     }
 
     return(

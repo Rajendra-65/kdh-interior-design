@@ -12,8 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { useState } from "react"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { signUpUser } from "../../../../service/credentialService"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 const SignUp = () => {
 
@@ -21,16 +22,11 @@ const SignUp = () => {
     const [lastName, setLastName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const router = useRouter()
 
     const HandleSignUp = () => {
         if (firstName === '' || email === '' || password === '' || password.length < 8) {
-            alert("Please fill all the required fields");
-            <Alert>
-                <AlertTitle>Error!</AlertTitle>
-                <AlertDescription>
-                    Please fill all the required field in correct format
-                </AlertDescription>
-            </Alert>
+            toast("Fill all the details correctly")
             return;
         }
 
@@ -43,17 +39,18 @@ const SignUp = () => {
 
         const user = signUpUser(signUpData)
         if (!user) {
-            alert("User already exists with this email");
+            toast("Email Already Exists");
             return;
         }
         else{
-            console.log(user)
+            toast("Successfully Signed-UP")
         }
         // Reset the form fields after successful sign-up
         setFirstName('');
         setLastName('');
         setEmail('');
         setPassword('');
+        router.push('/log-in')
     }
 
     return (

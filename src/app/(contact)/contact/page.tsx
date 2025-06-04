@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import React from "react";
 import { sendMessage } from "../../../../service/sendEmailService";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 // import Link from "next/link";
 
 const Contact = () => {
@@ -37,7 +38,7 @@ const Contact = () => {
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
         console.log("handleSubmit called");
         if (!name || !email || !message) {
-            alert("Please fill all the fields");
+            toast("fill all the details correctly")
             return;
         }
         e.preventDefault();
@@ -48,9 +49,9 @@ const Contact = () => {
         setMessage("");
         if (res.success) {
 
-            alert('Message sent!');
+            toast("message Sent");
         } else {
-            alert('Error sending message.');
+            toast("Error sending Message");
         }
     };
 

@@ -15,6 +15,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { logInUser } from "../../../../service/credentialService"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 const LogIn = () => {
 
@@ -24,7 +25,7 @@ const LogIn = () => {
 
     const handleLogIn = async () => {
         if (!email || !password) {
-            alert("Please fill all the fields")
+            toast("please fill all the details")
             return
         }
 
@@ -35,7 +36,7 @@ const LogIn = () => {
 
         const user = await logInUser(logInData)
 
-        alert(user.message)   
+        toast(user.message)   
         
         setEmail("")
         setPassword("")
