@@ -1,11 +1,37 @@
 "use client"
-import { LampFloor, TableCellsMerge, Wand } from "lucide-react";
+import {
+    AlignVerticalSpaceBetween,
+    Box,
+    Construction,
+    LampFloor,
+    MapPinHouse,
+    NotebookPen,
+    Projector,
+    Proportions,
+    Rotate3D,
+    Signature,
+    TableCellsMerge,
+    Telescope,
+    Wand
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "motion/react"
 import { useState } from "react";
-import { getInteriorImage } from "../../../../service/getImage";
-import { getOutroImage } from "../../../../service/getImage";
-import { getLighteningImage } from "../../../../service/getImage";
+import {
+    getLighteningImage,
+    getOutroImage,
+    getInteriorImage,
+    getAnimationImage,
+    getArchitectureImage,
+    getConsultationImage,
+    getDesignImage,
+    getEstmiationImage,
+    getElevationImage,
+    getSupervisionImage,
+    getThreed,
+    getPlanningImage,
+    getApprovalImage
+} from "../../../../service/getImage";
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -22,6 +48,16 @@ const Service = () => {
     const [interiorImage, setInteriorImage] = useState<string[]>([])
     const [outroImage, setOutroImage] = useState<string[]>([])
     const [LighteningImage, setLighteningImage] = useState<string[]>([])
+    const [animationImage, setAnimationImage] = useState<string[]>([])
+    const [architectureImage, setArchitectureImage] = useState<string[]>([])
+    const [consultationImage, setConsultationImage] = useState<string[]>([])
+    const [designImage, setDesignImage] = useState<string[]>([])
+    const [estimationImage, setEstimationImage] = useState<string[]>([])
+    const [elevationImage, setElevationImage] = useState<string[]>([])
+    const [supervisionImage, setSupervisionImage] = useState<string[]>([])
+    const [threedImage, setThreedImage] = useState<string[]>([])
+    const [planningImage, setPlanningImage] = useState<string[]>([])
+    const [approvalImage, setApprovalImage] = useState<string[]>([])
 
     const fetchImages = async () => {
         const interior = await getInteriorImage();
@@ -30,6 +66,26 @@ const Service = () => {
         setOutroImage(outro)
         const lightening = await getLighteningImage();
         setLighteningImage(lightening)
+        const animation = await getAnimationImage();
+        setAnimationImage(animation)
+        const architecture = await getArchitectureImage();
+        setArchitectureImage(architecture)
+        const consultation = await getConsultationImage();
+        setConsultationImage(consultation)
+        const elivation = await getElevationImage()
+        setElevationImage(elivation)
+        const estimation = await getEstmiationImage()
+        setEstimationImage(estimation)
+        const superVision = await getSupervisionImage()
+        setSupervisionImage(superVision)
+        const threed = await getThreed()
+        setThreedImage(threed)
+        const planning = await getPlanningImage()
+        setPlanningImage(planning)
+        const design = await getDesignImage()
+        setDesignImage(design)
+        const approval = await getApprovalImage()
+        setApprovalImage(approval)
     }
 
     useEffect(() => {
@@ -55,6 +111,22 @@ const Service = () => {
             alt: "Interior Design"
         },
         {
+            icon: Projector,
+            title: "Consultation",
+            description: "Get expert guidance at every step of your construction or design project with our personalized consultation services.",
+            shortQuote: "Your vision, our expert advice.",
+            image: consultationImage,
+            alt: "Consultation with client and architect"
+        },
+        {
+            icon: NotebookPen,
+            title: "Planning",
+            description: "We carefully plan each stage of your project to ensure timely delivery and flawless execution.",
+            shortQuote: "Great projects begin with great planning.",
+            image: planningImage,
+            alt: "Blueprint planning documents"
+        },
+        {
             icon: TableCellsMerge,
             title: "Outro Design",
             description: "Transform your space into a blend of functionality and elegance with our custom outro design solutions.",
@@ -63,12 +135,76 @@ const Service = () => {
             alt: "Outro Design"
         },
         {
+            icon: Construction,
+            title: "Architecture",
+            description: "We create innovative architectural designs that blend functionality with aesthetics, tailored to your needs.",
+            shortQuote: "Designing spaces that inspire.",
+            image: architectureImage,
+            alt: "Modern architectural design"
+        },
+        {
+            icon: Proportions,
+            title: "Design",
+            description: "Transform your ideas into beautiful, functional spaces with our expert design services.",
+            shortQuote: "Designs that reflect your dreams.",
+            image: designImage,
+            alt: "Interior and exterior design sketch"
+        },
+        {
             icon: LampFloor,
             title: "Lightening Design",
             description: "Illuminate your spaces with our expert lighting design services, creating ambiance and functionality that enhances every room.",
             shortQuote: "“Designs that reflect who you are — our promise is beauty with purpose.”",
             image: LighteningImage,
             alt: "Lightening Design",
+        },
+        {
+            icon: Signature,
+            title: "Plan Approval",
+            description: "We assist in getting your building plans approved by the authorities smoothly and efficiently.",
+            shortQuote: "Navigating paperwork, made easy.",
+            image: approvalImage,
+            alt: "Plan approval document with signature"
+        },
+        {
+            icon: AlignVerticalSpaceBetween,
+            title: "2D Elivation",
+            description: "Get accurate 2D elevations that represent the structure's true dimensions and appearance.",
+            shortQuote: "Precision on paper.",
+            image: elevationImage,
+            alt: "2D elevation drawing of a building"
+        },
+        {
+            icon: Box,
+            title: "3D View",
+            description: "Visualize your space in 3D before it’s built, helping you make confident design decisions.",
+            shortQuote: "See it before it’s real.",
+            image: threedImage,
+            alt: "3D architectural render"
+        },
+        {
+            icon: MapPinHouse,
+            title: "Estimation",
+            description: "We provide detailed cost estimation to help you plan your budget and avoid surprises.",
+            shortQuote: "Clarity in cost, peace of mind.",
+            image: estimationImage,
+            alt: "Cost estimation chart and house model"
+        },
+        {
+            icon: Telescope,
+            title: "Supervision",
+            description: "Our experts monitor your project on-site to ensure quality and timeline adherence.",
+            shortQuote: "Eyes on your site, always.",
+            image: supervisionImage,
+            alt: "Engineer supervising a construction site"
+        },
+        {
+            icon: Rotate3D,
+            title: "animation",
+            description: "Experience lifelike animated walkthroughs that bring your designs to life.",
+            shortQuote: "Animating your imagination.",
+            image: animationImage,
+            alt: "3D animation of building walkthrough"
         }
     ]
 
