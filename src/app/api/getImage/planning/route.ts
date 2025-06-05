@@ -3,8 +3,8 @@ import path from "path";
 import fs from "fs"
 
 export const GET = async () => {
-    const imageDir = path.join(process.cwd(), 'public', 'planning');
+    const imageDir = path.join(process.cwd(), 'public', 'Planning');
     const filenames = fs.readdirSync(imageDir);
-    const images = filenames.map((name) => `/planning/${name}`);
+    const images = filenames.map((name) => `/Planning/${name}`);
     return NextResponse.json({success:true,images:images})
 }
