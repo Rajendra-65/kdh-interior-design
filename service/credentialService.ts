@@ -53,6 +53,7 @@ export const resetPassword = async (resetData: resetDataType) => {
                 'Content-Type': 'application/json'
             }
         })
+        console.log(data)
         return data
     }catch(e){
         console.log(e)

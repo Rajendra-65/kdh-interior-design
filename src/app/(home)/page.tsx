@@ -15,12 +15,15 @@ import {
 import { getInteriorImage } from "../../../service/getImage";
 import { useEffect,useState } from "react";
 import { checkAuth } from "../../../service/tokenService";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [images, setImages] = useState<string[]>([])
   const [isAuthenticated , setIsAuthenticated] = useState<boolean>(false)
-  const str: string = "Interior Design KHD!"
+  const str: string = "KHD Interior Projects [OPC] pvt. LTD."
   const headArray: string[] = str.split(" ");
+
+  const router = useRouter()
 
   const fetchInteriorImage  = async () => {
     try {
@@ -73,7 +76,7 @@ export default function Home() {
             variants={divVariants}
             initial="hidden"
             animate="show"
-            className="flex gap-1 mb-1"
+            className="flex gap-1 mb-1 flex-wrap"
           >
             {headArray.map((word, index) => (
               <motion.h1
@@ -153,10 +156,11 @@ export default function Home() {
           <h1 className="text-4xl font-semibold text-gray-700 ml-3">Our Services</h1>
         </div>
         <div
-          className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2  pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4"
+              className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2  pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4"
+              onClick = {() => router.push('/service')}
         >
           <div
-            className="flex w-[450px] h-[130px] bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors duration-300 cursor-pointer"
+            className="flex w-[350px] sm:w-[450px] h-[130px] bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors duration-300 cursor-pointer"
           >
             <Zap className="size-28 text-cyan-400 text-center" />
             <div className="flex flex-col pl-3">
@@ -167,7 +171,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
+            className="flex w-[350px] sm:w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
           >
             <Zap className="size-28 text-cyan-400" />
             <div className="flex flex-col pl-3">
@@ -178,7 +182,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="flex w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
+            className="flex w-[350px] sm:w-[450px] h-[130px]  bg-gray-800 text-white border rounded-sm hover:bg-gray-950 transition-colors-duration-300 cursor-pointer"
           >
             <Zap className="size-28 text-cyan-400" />
             <div className="flex flex-col pl-3">

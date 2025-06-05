@@ -2,7 +2,8 @@ import { User } from "@/models/User";
 import { connectDB } from "../../../../utils/connectDB";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-export const POST = async (request: Request) => {
+
+export const PUT = async (request: Request) => {
     try {
         await connectDB()
         const { email, password } = await request.json();
@@ -24,6 +25,8 @@ export const POST = async (request: Request) => {
             {email:email},
             {$set:{password:hashedPassword}}
         )
+
+        console.log("updateduser",updateduser)
 
         return NextResponse.json({
             success:true,
