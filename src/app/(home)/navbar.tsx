@@ -35,7 +35,7 @@ const Navbar = () => {
         { name: "Services", href: "/service" },
         { name: "Contact", href: "/contact" },
         { name: "Support", href: "/support" },
-        { name: "Review", href: "/write-review" }
+        { name: "Review", href: "/reviews" }
     ];
 
     const containerVariants = {
