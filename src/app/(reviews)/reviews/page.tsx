@@ -18,14 +18,20 @@ const Reviews = () => {
 
     const [reviews, setReviews] = useState<ReviewTypes[]>([])
     const [fetched, setFetched] = useState<boolean>(false)
+    const [error,setError] = useState(false)
     const totalRate = 5
     const router = useRouter()
 
     const fetchReview = async () => {
         const response = await getReviews()
-        const data = response.reviews
-        setReviews(data)
-        setFetched(true)
+        if(response.success){
+            const data = response.reviews
+            setReviews(data)
+            setFetched(true)
+        }else{
+            setError(true)
+        }
+        
     }
 
     useEffect(() => {
@@ -35,7 +41,16 @@ const Reviews = () => {
     return (
         <>
             {
-                fetched ? (
+                error ? (
+                    <div className = "flex items-center justify-center px-4">
+                        <div className = "flex items-center justify-center w-full md:w-[50%] border border-b-2 border-r-2 border-cyan-400">
+                            <h1 className="font-bold text-xl px-2 py-2">
+                                Error in Fetching the Data please try again
+                            </h1>
+                        </div>
+                    </div>
+                ) : (
+                    fetched ? (
                     <>
                         <div className = "w-[80%] md:w-[50%] px-3 py-2 flex m-auto">
                             <Button 
@@ -117,6 +132,8 @@ const Reviews = () => {
                         </div>
                     </div>
                 )
+                )
+                
             }
         </>
     )
