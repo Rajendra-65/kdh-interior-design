@@ -35,7 +35,7 @@ const Footer = (cn:cn) => {
                     </div>
                     <div className="flex flex-col items-center justify-center p-2 ">
                         <h1 className="font-bold mb-2 cursor-pointer">Company</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Review</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick = {()=>Router.push('/reviews')}>Review</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">Carrers</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer">Pricing</h1>
                     </div>
@@ -44,8 +44,8 @@ const Footer = (cn:cn) => {
                         onClick = {() => Router.push('/contact')}
                     >
                         <h1 className="font-bold mb-2 cursor-pointer" onClick = {()=>Router.push('/contact')}>Contact Us</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">khdarchprojects@gmail.com</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">ChandrasekharPur Bhubaneswar</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick = {()=>Router.push('/contact')}>khdarchprojects@gmail.com</h1>
+                        <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick = {()=>Router.push('/contact')}>ChandrasekharPur Bhubaneswar</h1>
                         
                     </div>
                 </div>
