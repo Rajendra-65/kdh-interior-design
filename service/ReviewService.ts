@@ -7,6 +7,13 @@ interface ReviewDataProps {
     rate : number
 }
 
+interface startProjectDataProps {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+}
+
 export const createReview = async (reviewData : ReviewDataProps) => {
     console.log(reviewData)
     const response = await axios.post('/api/create-review',JSON.stringify(reviewData),{
@@ -19,5 +26,14 @@ export const createReview = async (reviewData : ReviewDataProps) => {
 
 export const getReviews = async () => {
     const response = await axios.get('/api/get-review')
+    return response.data
+}
+
+export const startProject = async (values:startProjectDataProps) => {
+    const response = await axios.post('/api/start-project',JSON.stringify(values),{
+        headers:{
+            "Content-Type" : "application/json"
+        }
+    })
     return response.data
 }

@@ -9,7 +9,6 @@ import { z } from "zod"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,7 +16,7 @@ import {
 } from "@/components/ui/form"
 
 import { Input } from "@/components/ui/input"
-import { createReview } from "../../../../service/ReviewService"
+import { startProject } from "../../../../service/ReviewService"
 import { toast } from "sonner"
 
 // 1. Define your Zod schema
@@ -44,7 +43,7 @@ const formSchema = z.object({
 // 2. Infer the TypeScript type
 type FormSchemaType = z.infer<typeof formSchema>
 
-const WriteReview = () => {
+const StartProject = () => {
 
   // 3. Hook up useForm with correct type
   const form = useForm<FormSchemaType>({
@@ -59,7 +58,7 @@ const WriteReview = () => {
 
   // 4. Correctly type your submit handler
   const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
-    const response = await createReview(values)
+    const response = await startProject(values)
     if (response.success) {
       toast.success(response.message)
     } else {
@@ -91,7 +90,7 @@ const WriteReview = () => {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>lastName</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter Your lastName" {...field} />
                 </FormControl>
@@ -104,11 +103,10 @@ const WriteReview = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Opinion</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type = "email" placeholder="Enter Your email" {...field} />
                 </FormControl>
-                <FormDescription>Write your opinion here</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -118,7 +116,7 @@ const WriteReview = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Rate Us</FormLabel>
+                <FormLabel>Phone</FormLabel>
                 <FormControl>
                   <Input placeholder = "Enter your Phone" {...field} />
                 </FormControl>
@@ -135,4 +133,4 @@ const WriteReview = () => {
   )
 }
 
-export default WriteReview
+export default StartProject
