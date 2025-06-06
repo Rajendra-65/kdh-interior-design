@@ -15,7 +15,6 @@ interface startProjectDataProps {
 }
 
 export const createReview = async (reviewData : ReviewDataProps) => {
-    console.log(reviewData)
     const response = await axios.post('/api/create-review',JSON.stringify(reviewData),{
         headers:{
             "Content-Type" : "application/json"

@@ -6,14 +6,14 @@ export const POST = async (request: Request) => {
     try {
         await connectDB()
         const { username, email, message, rate } = await request.json()
-        console.log(rate)
+
         const review = await Review.create({
             userName: username,
             email,
             message,
             rate
         })
-        console.log(review)
+
 
         return NextResponse.json({
             success: true,

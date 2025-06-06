@@ -16,7 +16,6 @@ export const signUpUser = async (signUpData: signUpDataType) => {
     try {
 
         const { data } = await axios.post('/api/create-user', signUpData)
-        console.log(data.user)
         return data.user;
     } catch (error) {
         console.log(error)
@@ -36,10 +35,7 @@ export const logInUser = async (logInData: logInDataType) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(data)
-        if (!data.success) {
-            console.log(data.user)
-        }
+        
         return data;
     } catch (error) {
         console.log(error)
@@ -53,7 +49,6 @@ export const resetPassword = async (resetData: resetDataType) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(data)
         return data
     }catch(e){
         console.log(e)

@@ -26,7 +26,7 @@ export const PUT = async (request: Request) => {
             {$set:{password:hashedPassword}}
         )
 
-        console.log("updateduser",updateduser)
+
 
         return NextResponse.json({
             success:true,

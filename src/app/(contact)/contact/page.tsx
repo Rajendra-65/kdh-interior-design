@@ -36,13 +36,11 @@ const Contact = () => {
     };
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
-        console.log("handleSubmit called");
         if (!name || !email || !message) {
             toast("fill all the details correctly")
             return;
         }
         e.preventDefault();
-        console.log(name,email,message)
         const res = await sendMessage(name,email,message)
         setName("");
         setEmail("");

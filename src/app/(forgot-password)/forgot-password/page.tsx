@@ -34,7 +34,7 @@ const ForgotPassword = () => {
         }
 
         const user = await resetPassword(resetData)
-        console.log(user)
+  
 
         toast(user.message)
 

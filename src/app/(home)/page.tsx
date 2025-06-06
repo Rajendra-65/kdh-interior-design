@@ -45,8 +45,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const images = fetchInteriorImage();
-    console.log(images)
+    fetchInteriorImage();
   }, [])
 
   useEffect(() => {

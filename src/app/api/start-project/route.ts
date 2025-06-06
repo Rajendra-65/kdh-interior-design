@@ -5,8 +5,7 @@ import { NextResponse } from 'next/server';
 
 export const POST = async (request: Request) => {
     const { firstName,lastName,email,phone} = await request.json();
-    console.log("inside API route")
-    console.log( email , phone)
+
 
     const transporter = nodemailer.createTransport({
         service: 'Gmail',

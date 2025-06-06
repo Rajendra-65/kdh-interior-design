@@ -6,7 +6,7 @@ export const GET = async () => {
     try{
         await connectDB()
         const review = await Review.find()
-        console.log(review)
+
         return NextResponse.json({
             success:true,
             reviews:review
