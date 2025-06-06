@@ -36,8 +36,7 @@ const Footer = (cn:cn) => {
                     <div className="flex flex-col items-center justify-center p-2 ">
                         <h1 className="font-bold mb-2 cursor-pointer">Company</h1>
                         <h1 className="text-sm font-semibold mb-1 cursor-pointer" onClick = {()=>Router.push('/reviews')}>Review</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Carrers</h1>
-                        <h1 className="text-sm font-semibold mb-1 cursor-pointer">Pricing</h1>
+            
                     </div>
                     <div 
                         className="flex flex-col items-center justify-center p-2 cursor-pointer"
