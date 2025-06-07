@@ -64,7 +64,7 @@ const SignUp = () => {
                             className="text-sm text-cyan-400 underline underline-offset-1"
                             href="/log-in"
                         >
-                            login to your account
+                            login to Existing account
                         </Link>
                     </CardDescription>
                 </CardHeader>

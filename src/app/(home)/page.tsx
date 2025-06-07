@@ -109,7 +109,7 @@ export default function Home() {
                 <Link href="/start-project">Start Project</Link>
               ) : (
                 <Link 
-                  href="#" 
+                  href="/sign-up" 
                   onClick = {()=>handleStartProjectClick()}
                 >
                   Start Project
