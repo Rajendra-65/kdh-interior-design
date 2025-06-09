@@ -94,7 +94,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-0" />
 
         {/* Main Content over video */}
-        <div className="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-10 md:py-4 py-2 px-6 lg:pb-0 h-full">
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-10 md:py-4 py-2 px-6 lg:pb-0 h-full top-[200px] md:top-0">
           {/* Left: Text Section */}
           <div className="flex flex-col max-w-xl flex-1">
             <motion.div
@@ -235,9 +235,16 @@ export default function Home() {
               alt= "KFC logo"
             />
           </div>
+          <div>
+            <Image
+              src="/client-logo/ilex-logo.png"
+              width = {60}
+              height = {60}
+              alt= "KFC logo"
+            />
+          </div>
         </div>
       </div>
-
     </>
   );
 }
