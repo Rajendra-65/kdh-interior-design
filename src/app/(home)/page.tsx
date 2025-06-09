@@ -4,19 +4,20 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link"
 import { Zap } from "lucide-react";
 import { motion } from "motion/react";
-// import { Card, CardContent } from "@/components/ui/card"
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { getInteriorImage } from "../../../service/getImage";
 import { useEffect, useState } from "react";
 import { checkAuth } from "../../../service/tokenService";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export default function Home() {
   const [images, setImages] = useState<string[]>([])
@@ -80,7 +81,7 @@ export default function Home() {
       <div className="relative w-full h-screen overflow-hidden">
         {/* Background Video */}
         <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-fill"
           autoPlay
           muted
           loop
@@ -150,13 +151,36 @@ export default function Home() {
         </div>
       </div>
 
+      {/* The image right after the Video */}
+
+      <div className="flex justify-center items-center w-full px-4 py-8 bg-gray-50">
+        <Carousel className="w-full max-w-4xl">
+          <CarouselContent>
+            {images.map((image, index) => (
+              <CarouselItem key={index} className="px-2 md:basis-1/3">
+                <Card className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                  <CardContent className="flex items-center justify-center p-0 overflow-hidden rounded-xl">
+                    <span
+                      className="w-full h-64 block bg-cover bg-center transition-transform duration-300 ease-in-out hover:scale-105"
+                      style={{ backgroundImage: `url(${image})` }}
+                    />
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+
+
       {/* Services Section - Separate from video */}
       <div className="flex flex-col items-start bg-white">
         <div className="flex pl-8">
           <div className="h-[2px] w-14 bg-gray-700 justify-center mt-6"></div>
           <h1 className="text-4xl font-semibold text-gray-700 ml-3">Our Services</h1>
         </div>
-
         <div
           className="flex flex-col md:flex-row items-center justify-center place-items-center gap-2 pt-4 w-full md:items-start md:flex md:gap-4 md:flex-wrap md:justify-center pb-4"
           onClick={() => router.push('/service')}
@@ -186,6 +210,31 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      
+      <div className = "pt-2 flex flex-col">
+        <div className="flex pl-8">
+          <div className="h-[2px] w-14 bg-gray-700 justify-center mt-6"></div>
+          <h1 className="text-4xl font-semibold text-gray-700 ml-3">Our Happy Clients</h1>
+        </div>
+        <div className = " w-full pl-2 h-auto py-2 border flex items-center justify-center pt-3 flex-wrap gap-5">
+          <div>
+            <Image
+              src="/client-logo/kfc-logo.png"
+              width = {60}
+              height = {60}
+              alt= "KFC logo"
+            />
+          </div>
+          <div>
+            <Image
+              src="/client-logo/dash-plastic-surgery-dasthetics-logo.png"
+              width = {60}
+              height = {60}
+              alt= "KFC logo"
+            />
+          </div>
         </div>
       </div>
 
