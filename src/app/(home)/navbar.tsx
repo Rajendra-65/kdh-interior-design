@@ -22,6 +22,7 @@ const Navbar = () => {
 
     const pathName = usePathname();
     const router = useRouter();
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
 
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
@@ -147,7 +148,10 @@ const Navbar = () => {
             </motion.button>
 
             <div className="visible md:hidden">
-                <Sheet>
+                <Sheet
+                    open={isSheetOpen} 
+                    onOpenChange={setIsSheetOpen}
+                >
                     <SheetTrigger asChild>
                         <Menu />
                     </SheetTrigger>
@@ -158,7 +162,9 @@ const Navbar = () => {
                                 <li key={idx} className="text-lg font-semibold cursor-pointer">
                                     <Link
                                         href={item.href}
+                                        onClick={() => setIsSheetOpen(false)}
                                         className={`hover:underline-offset-1 hover:underline ${pathName === item.href ? "underline-offset-1 underline" : ""}`}
+
                                     >
                                         {item.name}
                                     </Link>
