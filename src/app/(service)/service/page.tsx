@@ -17,6 +17,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { motion } from "motion/react"
 import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import {
     getLighteningImage,
     getOutroImage,
@@ -257,20 +259,33 @@ const Service = () => {
                         <div className="w-full relative">
                             <Carousel className="w-full">
                                 <CarouselContent>
-                                    {service.image.map((image, index) => (
-                                        <CarouselItem key={index}>
-                                            <div className="p-2">
-                                                <Card className="w-full">
-                                                    <CardContent className="p-0 w-full h-48">
-                                                        <span
-                                                            className="block w-full h-full bg-cover bg-center rounded-lg shadow-md"
-                                                            style={{ backgroundImage: `url(${image})` }}
-                                                        ></span>
-                                                    </CardContent>
-                                                </Card>
+                                    {
+                                        service.image && service.image.length > 0 ? (
+                                            service.image.map((image, index) => (
+                                                <CarouselItem key={index}>
+                                                    <div className="p-2">
+                                                        <Card className="w-full">
+                                                            <CardContent className="p-0 w-full h-48">
+                                                                <span
+                                                                    className="block w-full h-full bg-cover bg-center rounded-lg shadow-md"
+                                                                    style={{ backgroundImage: `url(${image})` }}
+                                                                ></span>
+                                                            </CardContent>
+                                                        </Card>
+                                                    </div>
+                                                </CarouselItem>
+                                            ))
+                                        ) : (
+                                            <div className="flex items-center space-x-4 m-auto">
+                                                <Skeleton className="h-12 w-12 rounded-full bg-gray-400" />
+                                                <div className="space-y-2 ">
+                                                    <Skeleton className="h-4 w-[250px] bg-gray-400" />
+                                                    <Skeleton className="h-4 w-[200px] bg-gray-400" />
+                                                </div>
                                             </div>
-                                        </CarouselItem>
-                                    ))}
+                                        )
+                                    }
+
                                 </CarouselContent>
                                 <CarouselPrevious />
                                 <CarouselNext />
