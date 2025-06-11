@@ -243,6 +243,15 @@ export default function Home() {
               alt= "KFC logo"
             />
           </div>
+          <div>
+            <Image
+              src="/client-logo/IREL-logo.jpg"
+              width = {60}
+              height = {60}
+              alt = "KFC logo"
+              className = "z-10"
+            />
+          </div>
         </div>
       </div>
     </>
